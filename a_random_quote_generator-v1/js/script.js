@@ -68,12 +68,26 @@ const quotes = [
  * `getRandomQuote` function
 ***/
 
+const getRandomQuote = () => {
+  let randomNumber = Math.floor(Math.random() * quotes.length);
+  let randomQuote = quotes[randomNumber];
+  console.log(randomNumber);
+  console.log(randomQuote);
+  return randomQuote;
+}
 
+getRandomQuote();
 
 /***
  * `printQuote` function
 ***/
 
+const printQuote = () => {
+  let chosenQuote = getRandomQuote();
+  let quoteHTML = 
+    `<p class="quote">quotes.quote</p>
+     <p class="source">quotes.source`
+}
 
 
 /***
