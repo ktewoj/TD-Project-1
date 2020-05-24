@@ -80,15 +80,25 @@ getRandomQuote();
 
 /***
  * `printQuote` function
+ * Referenced https://medium.com/@hohanga/how-to-check-if-a-property-exists-in-a-javascript-object-1e1f5f1323e9 for info on how to check if a property exists within an object
 ***/
 
 const printQuote = () => {
   let chosenQuote = getRandomQuote();
   let quoteHTML = 
-    `<p class="quote">quotes.quote</p>
-     <p class="source">quotes.source`
+    '<p class="quote">' + quotes.quote + '</p>' +
+     '<p class="source">' + quotes.source;
+     if (citation in quotes) {
+      quoteHTML += '<span class="citation">' + quotes.citation + '</span> ';
+    }
+  console.log(quoteHTML);
 }
 
+printQuote();
+
+/*const printQuote = () => {
+  let chosenQuote = getRandomQuote();
+}
 
 /***
  * click event listener for the print quote button
