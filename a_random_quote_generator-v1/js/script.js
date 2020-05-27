@@ -86,19 +86,15 @@ getRandomQuote();
 const printQuote = () => {
   let chosenQuote = getRandomQuote();
   let quoteHTML = 
-    '<p class="quote">' + quotes.quote + '</p>' +
-     '<p class="source">' + quotes.source;
-     if (citation in quotes) {
-      quoteHTML += '<span class="citation">' + quotes.citation + '</span> ';
+    '<p class="quote">' + chosenQuote.quote + '</p>' +
+     '<p class="source">' + chosenQuote.source;
+     if (chosenQuote.citation) {
+      quoteHTML += '<span class="citation">' + chosenQuote.citation + '</span> ';
     }
   console.log(quoteHTML);
 }
 
 printQuote();
-
-/*const printQuote = () => {
-  let chosenQuote = getRandomQuote();
-}
 
 /***
  * click event listener for the print quote button
