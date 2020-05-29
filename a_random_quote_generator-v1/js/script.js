@@ -8,7 +8,9 @@ project 1 - A Random Quote Generator
   // Reach out in your Slack community - https://treehouse-fsjs-102.slack.com/app_redirect?channel=chit-chat
 
 /*** 
- * `quotes` array 
+ * `quotes` array - I grabbed 10 quotes from Clickhole's "They Said What?!" features, which is basically fake celebrity quotes.
+ * I created an array of objects - the array is called ` quotes ` and there are 10 objects within it, each containing at least a quote and a source. Some have a citation and/or year property (the year is made up).
+ * Each property within the objects is a string, except the year, which is a number.
 ***/
 
 const quotes = [
@@ -65,22 +67,27 @@ const quotes = [
 ];
 
 /***
- * `getRandomQuote` function
+ * `getRandomQuote` function - I used arrow notation to create a function that procures a random object from my quotes array.
+ * The two variables set are randomNumber, which stores a random number from 0 to 9 - the length of the array, and randomQuote, which stores the object that correlates to the number chosen.
+ * Finally, I used "return" at the end to cause the function to produce the value of randomQuote when the function is called.
 ***/
 
 const getRandomQuote = () => {
   let randomNumber = Math.floor(Math.random() * quotes.length);
   let randomQuote = quotes[randomNumber];
-  console.log(randomNumber);
-  console.log(randomQuote);
   return randomQuote;
 }
 
 getRandomQuote();
 
 /***
- * `printQuote` function
- * Referenced https://medium.com/@hohanga/how-to-check-if-a-property-exists-in-a-javascript-object-1e1f5f1323e9 for info on how to check if a property exists within an object
+ * `printQuote` function - when called, produces a string of HTML based on the properties of the random quote object selected
+ * This function starts by declaring the variable chosenQuote, which stores the result of the getRandomQuote function
+ * Next, the variable quoteHTML is declared, and a string containing elements from the random quote object's quote and source properties
+ * An if statement checks to see if the object has a citation property, and, if so, adds HTML string and the citation element
+ * A second if statement checks to see if the object has a year property, and, if so, adds HTML string and the year element
+ * A string of the closing </p> tag is concatenated onto whatever HTML string is produced from the conditionals
+ * Finally, the value of the quoteHTML variable (an HTML string) is returned when the function is called.
 ***/
 
 const printQuote = () => {
@@ -90,11 +97,14 @@ const printQuote = () => {
      '<p class="source">' + chosenQuote.source;
      if (chosenQuote.citation) {
       quoteHTML += '<span class="citation">' + chosenQuote.citation + '</span> ';
-    }
-  console.log(quoteHTML);
+    } if (chosenQuote.year) {
+      quoteHTML += '<span class="year">' + chosenQuote.year + '</span> ';
+    } 
+  quoteHTML += '</p>';
+  return quoteHTML;
 }
 
-printQuote();
+document.getElementById('quote-box').innerHTML = printQuote();
 
 /***
  * click event listener for the print quote button
