@@ -78,8 +78,6 @@ const getRandomQuote = () => {
   return randomQuote;
 }
 
-getRandomQuote();
-
 /***
  * `printQuote` function - when called, produces a string of HTML based on the properties of the random quote object selected
  * This function starts by declaring the variable chosenQuote, which stores the result of the getRandomQuote function
